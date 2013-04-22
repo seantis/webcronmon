@@ -71,3 +71,32 @@ list_monitor_uptimes = 86400
 
 # show a subset of groups on /my-client:
 # /my-client = Client Group, Another Client Group
+
+# python logging config
+# see http://docs.python.org/2/library/logging.config.html#module-logging.config
+[loggers]
+keys = root, webcronmon
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = ERROR
+handlers = console
+
+[logger_webcronmon]
+level = INFO
+propagate = 0
+handlers = console
+qualname = webcronmon
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+formatter = generic
+
+[formatter_generic]
+format = %(asctime)s %(levelname)-5.5s [%(name)s] %(message)s

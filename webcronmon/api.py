@@ -1,3 +1,6 @@
+import logging
+log = logging.getLogger('webcronmon')
+
 import requests
 import functools
 
@@ -8,6 +11,7 @@ import webcronmon
 
 
 def get(*args, **kwargs):
+    log.info('requesting {}'.format(args[0]))
     return partial(requests.get, auth=requests.auth.HTTPBasicAuth(
         webcronmon.active_config.credentials.username,
         webcronmon.active_config.credentials.password

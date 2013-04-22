@@ -57,6 +57,9 @@ def run():
         )
         webcronmon.app.add_url_rule(route, route.replace('/', '-'), view)
 
-    webcronmon.app.run(
-        host=config.app.host, port=config.app.port, debug=config.app.debug
-    )
+    try:
+        webcronmon.app.run(
+            host=config.app.host, port=config.app.port, debug=config.app.debug
+        )
+    except KeyboardInterrupt:
+        pass

@@ -1,5 +1,7 @@
 import os.path
 import ConfigParser
+import logging.config
+
 from collections import namedtuple
 
 integer_values = (
@@ -60,6 +62,8 @@ def load():
         It seems like config.ini does not exist. Did you run init-webcronmon
         in your current directory?
     """
+
+    logging.config.fileConfig('config.ini')
 
     config = ConfigParser.SafeConfigParser()
     config.read('config.ini')
