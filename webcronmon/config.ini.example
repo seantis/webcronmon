@@ -1,33 +1,72 @@
+
+# Your webcron.org API credentials which can be found under the following url:
 # via https://webcron.org/index.php?option=com_webcron&controller=dashboard&task=api_key
+
 [credentials]
 username = 
 password = 
 
 [app]
+
+# Flask debug mode (True / False)
 debug = False
+
+# How often the page should be refreshed when open, in seconds.
+# Use 0 if you wish no auto refresh. Note that a higher refresh interval
+# does not necessarily mean that the information shown is more up to date.
+# See api_cache section to learn more.
 auto_refresh = 60
-title = Seantis Web Monitor
+
+# The title of the page
+title = Web Monitor
+
+# The interface the application is bound to
 host = 127.0.0.1
+
+# The port
 port = 5000
 
 [cache]
-# http://pythonhosted.org/Flask-Cache/
+# Flask-Cache configuration. See http://pythonhosted.org/Flask-Cache/
+# You need to change this to memcache or redis if you want to keep multiple 
+# instances of webcronmon running for production. 
+# Usually one instance should be fine though.
 cache_type = simple
 cache_threshold = 1000
 
 [api_cache]
-# update the monitors list every 15 minutes
+# Webcron.org has a limit of 2000 api requests a day. This section
+# defines the cache-timeout of used api requests to keep the requests below
+# 2000. You usually do not want to touch this. Changing those values might
+# bring you over your request limit.
+
+# update the monitors list every 15 minutes, new monitors are therefore
+# only shown in the list after 15 minutes
 list_monitors = 900
 
-# update the monitors state every 60 seconds
+# update the monitors state every 60 seconds (online / offline)
 list_monitor_states = 60
 
-# update the monitors uptime once every 24 hours
+# update the monitors uptime once every 24 hours (it's a 30 day report)
 list_monitor_uptimes = 86400
+
+# The number of requests you reach, given a monitor list of 100 monitors and
+# assuming that you do not restart webcronmon at any point during the day:
+
+# list_monitors = 24 hours / 15 minutes = 24 * 60 / 15 = 96
+# list_monitor_states = 24 hours / 1 minute = 24 * 60 / 1 = 1440
+# list_monitor_uptimes = 100 monitors * 24 hours / 24 hours = 100
+# -> 1440 + 100 + 96 => 1636
+
+# Again, this is assuming you do not restart webcronmon. If you do restart
+# it the cache will expire immediately.
 
 [routes]
 
-# show all groups on root:
+# Webcronmon has the ability to show different groups to different clients
+# under different urls. You may define these routes here as in these examples:
+
+# show all groups on root
 / = *
 
 # show a subset of groups on /my-client:
