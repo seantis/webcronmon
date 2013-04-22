@@ -1,0 +1,3 @@
+include *.py *.md
+recursive-include webcronmon *.py *.css *.html *.js
+prune config.ini

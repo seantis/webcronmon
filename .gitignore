@@ -1,0 +1,8 @@
+.DS_Store
+config.ini
+dist
+build
+.tox
+*.pyc
+*.egg-infobuild
+*.egg-info

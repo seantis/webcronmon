@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if IE 8]>               <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  
+  <title>{{ config.app.title }}</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+  
+  <link rel="stylesheet" href="/static/zurb/css/normalize.css" />
+  <link rel="stylesheet" href="/static/zurb/css/foundation.min.css" />
+
+  <link rel="stylesheet" href="/static/custom.css" />
+  <link rel="stylesheet" href="/static/hint.css" />
+  
+  <script src="/static/zurb/js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+    <div class="row header">
+        <div class="small-9 columns">
+            <h1>{{ config.app.title }}</h1>
+        </div>
+        <div class="small-3 columns">
+            <h2 class="countdown hint--left" data-hint="Pause / Continue Autorefresh" data-from="{{ config.app.auto_refresh }}">{{ config.app.auto_refresh }}</h2>
+        </div>
+    </div>
+
+    <div class="row" id="monitors">
+        <div class="small-12 columns">
+            {% for group, monitors in monitors|sort %}    
+            <table>
+                <thead>
+                    <th colspan="3">{{ group }}</th>
+                </thead>
+                <tbody>
+                {% for monitor in monitors %}
+                    <tr class="monitor monitor-state-{{ monitor.state }}">
+                        <td class="monitor-name">
+                            <a href="{{ monitor.url }}" class="hint--right" data-hint="Open {{ monitor.url }}">{{ monitor.name }}</a>
+                        </td>
+                        <td class="monitor-state">
+                            <span class="hint--left" data-hint="Current Status">{{ monitor.status_text }}</span>
+                        </td>
+                        <td class="monitor-uptime">
+                            <span class="hint--left" data-hint="Average uptime of the last 30 days">
+                                {{ "%.2f%%"|format(monitor.uptime) }}
+                            </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+    </div>
+
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/refresh.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+body * {
+    font-family: "Noto Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;  
+}
+
+.header h1 {
+    font-weight: normal;
+    font-size: 1.1em;
+    color: #353535;
+    margin: 1em 0.5em 1em 0;
+}
+
+.countdown {
+    font-weight: normal;
+    font-size: 1em;
+    margin: 1em auto auto auto;
+    cursor: pointer;
+    color: #353535;
+    display: inline-block;
+    float: right;
+    
+}
+
+table {
+    width: 100%;
+    border: none;
+}
+
+table th {
+    color: #777 !important;
+    background-color: #efefef;
+    border-bottom: 1px solid #ccc;
+    font-weight: normal;
+    text-align: left !important;
+}
+
+table tr {
+    border-bottom: 1px solid #efefef;   
+}
+
+table tr:hover {
+    background-color: #efefef;
+}
+
+.monitor-name, .monitor-state {
+     width: 400px;
+}
+
+.monitor-uptime, .monitor-state {
+    text-align: right;
+}
+
+.monitor-uptime span {
+    font-weight: normal;
+    border-bottom: none; 
+}
+
+.monitor-state span {
+    border-radius: 2px;
+    padding: 2px 4px;   
+    color: white;
+}
+
+.monitor-state-ok .monitor-state span {
+    background-color: #1cd500;
+}
+
+.monitor-state-error .monitor-state span {
+    background-color: #ff1100;
+}
+
+.error {
+    background-color: #ff1100;
+    padding: 1em;
+    color: white;  
+}
+
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+    
+    .countdown {
+         display: none;   
+    }
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr { 
+        display: block !important;
+        width: auto !important;
+    }
+
+    /* a elements blow the page on phones, don't know why yet */
+    a {
+        overflow: hidden;
+    }
+    
+    .monitor-uptime, .monitor-state {
+        text-align: left;
+    }
+}

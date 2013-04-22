@@ -1,0 +1,34 @@
+# via https://webcron.org/index.php?option=com_webcron&controller=dashboard&task=api_key
+[credentials]
+username = 
+password = 
+
+[app]
+debug = False
+auto_refresh = 60
+title = Seantis Web Monitor
+host = 127.0.0.1
+port = 5000
+
+[cache]
+# http://pythonhosted.org/Flask-Cache/
+cache_type = simple
+cache_threshold = 1000
+
+[api_cache]
+# update the monitors list every 15 minutes
+list_monitors = 900
+
+# update the monitors state every 60 seconds
+list_monitor_states = 60
+
+# update the monitors uptime once every 24 hours
+list_monitor_uptimes = 86400
+
+[routes]
+
+# show all groups on root:
+/ = *
+
+# show a subset of groups on /my-client:
+# /my-client = Client Group, Another Client Group
