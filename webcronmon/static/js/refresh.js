@@ -3,6 +3,11 @@ $(function() {
     var refresh_interval = container.data('from');
     var paused = false;
 
+    if (refresh_interval === 0) {
+        container.hide();
+        return;
+    }
+
     var countdown = function(from) {
         var current = from;
         var interval_id = setInterval(function() {
