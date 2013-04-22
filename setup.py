@@ -1,14 +1,24 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 config = {
-    'name': 'WebCronMon',
+    'name': 'webcronmon',
     'description': 'Webcron.org Site Monitor',
-    'long_description': open('README.md').read(),
+    'long_description': open('README.rst').read(),
     'author': 'Seantis GmbH',
     'url': 'https://pypi.python.org/pypi/webcronmon',
     'author_email': 'info@seantis.ch',
     'version': '1.0',
-    'packages': find_packages(),
+    'packages': ['webcronmon'],
+    'package_dir': {'webcronmon': 'webcronmon'},
+    'package_data': {'webcronmon': [
+        'config.ini.example',
+        'templates/*.html',
+        'static/*.css',
+        'static/js/*.js',
+        'static/zurb/css/*.css',
+        'static/zurb/js/*.js',
+        'static/zurb/js/vendor/*.js',
+    ]},
     'platforms': 'any',
     'license': 'MIT',
     'install_requires': [

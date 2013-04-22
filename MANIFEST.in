@@ -1,3 +1,2 @@
-include *.py *.md
+include LICENSE README.rst
 recursive-include webcronmon *.py *.css *.html *.js
-prune config.ini

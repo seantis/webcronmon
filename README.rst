@@ -18,6 +18,11 @@ The monitor only shows the bare minimum of information to keep things simple:
 
 The site will update the list every 60 seconds by default, unless configured otherwise or unless the timer on the upper right is toggled with a mouse-click.
 
+Demo
+----
+
+http://monitor.seantis.ch
+
 Requirements
 ------------
 
@@ -61,7 +66,32 @@ To start webcronmon simply execute ``run-webcronmon`` in the folder in which you
 Deployment
 ----------
 
-We recommend to only run one webcronmon instance and offer it through a reverse proxy. More information will follow.
+We recommend to only run one webcronmon instance and offer it through a reverse proxy. Personally we use `Circus`_ by Mozilla with the following circus.ini::
+
+    [watcher:webcronmon]
+    gid = webcronmon
+    uid = webcronmon
+    cmd = /home/webcronmon/app/bin/run-webcronmon
+    virtualenv = /home/webcronmon/app
+    working_dir = /home/webcronmon/app
+    numprocesses = 1
+    singleton = True
+    copy_env = True
+
+As a reverse proxy we use Nginx as follows::
+
+    server {
+        server_name monitor.seantis.ch;
+
+        listen      80;
+
+        location / {
+            proxy_pass http://localhost:8081;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_redirect off;
+        }
+    }
 
 Copyright
 ---------
@@ -77,3 +107,4 @@ MIT
 .. _`Seantis GmbH`: http://www.seantis.ch
 .. _`Seantis`: http://www.seantis.ch
 .. _`Flask`: http://flask.pocoo.org
+.. _`Circus`: http://circus.readthedocs.org
