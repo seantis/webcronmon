@@ -7,7 +7,7 @@ config = {
     'author': 'Seantis GmbH',
     'url': 'https://pypi.python.org/pypi/webcronmon',
     'author_email': 'info@seantis.ch',
-    'version': '1.0',
+    'version': '1.0.1',
     'packages': ['webcronmon'],
     'package_dir': {'webcronmon': 'webcronmon'},
     'package_data': {'webcronmon': [

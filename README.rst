@@ -103,6 +103,18 @@ License
 
 MIT
 
+History
+-------
+
+1.0.1
+~~~~~
+ - Fixes the app crashing when a monitor reports an offline server
+
+1.0
+~~~
+
+ - Initial Release
+
 .. _`Webcron.org`: https://www.webcron.org
 .. _`Seantis GmbH`: http://www.seantis.ch
 .. _`Seantis`: http://www.seantis.ch
