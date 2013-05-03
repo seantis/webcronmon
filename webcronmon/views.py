@@ -21,7 +21,7 @@ class AttributeDict(dict):
 def parse_server_time(timestr):
     return datetime.strptime(
         timestr, '%Y-%m-%d %H:%M:%S'
-    ).replace(tzinfo=tzoffset('server-timezone'))
+    ).replace(tzinfo=server_tz)
 
 
 def current_local_time():
