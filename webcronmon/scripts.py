@@ -1,3 +1,4 @@
+import logging
 import os
 import os.path
 
@@ -57,9 +58,13 @@ def run():
         )
         webcronmon.app.add_url_rule(route, route.replace('/', '-'), view)
 
+    # force logging through webcronmon
+    webcronmon.app._logger = logging.getLogger('webcronmon')
+    webcronmon.app.logger_name = 'webcronmon'
+
     try:
         webcronmon.app.run(
-            host=config.app.host, port=config.app.port, debug=config.app.debug
+            host=config.app.host, port=config.app.port, debug=config.app.debug,
         )
     except KeyboardInterrupt:
         pass
