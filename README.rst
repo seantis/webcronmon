@@ -93,6 +93,14 @@ As a reverse proxy we use Nginx as follows::
         }
     }
 
+To start the server reload nginx::
+
+    sudo /etc/init.d/nginx reload
+
+And start webcronmon through circus::
+
+    sudo circusctl start webcronmon
+
 Copyright
 ---------
 
