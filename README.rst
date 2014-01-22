@@ -114,8 +114,8 @@ MIT
 History
 -------
 
-1.0.2 (unreleased)
-~~~~~~~~~~~~~~~~~
+1.0.2 (2014-01-22)
+~~~~~~~~~~~~~~~~~~
 
  - Fixes wrong monitor urls when the protocol is defined redundantly.
 
