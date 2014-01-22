@@ -89,10 +89,10 @@ def all_monitors():
         state, since = monitor_states[monitor_id]
         uptime = monitor_uptimes[monitor_id]
 
-        if 'http' in monitor.url:
-            url = monitor.url
+        if 'http' in monitor.url.text:
+            url = monitor.url.text
         else:
-            url = monitor.url.get('protocol') + '://' + monitor.url
+            url = monitor.url.get('protocol') + '://' + monitor.url.text
 
         if state == 'ok':
             status_text = 'Online'

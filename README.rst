@@ -117,6 +117,8 @@ History
 1.0.2 (unreleased)
 ~~~~~~~~~~~~~~~~~
 
+ - Fixes wrong monitor urls when the protocol is defined redundantly.
+
  - Adds clickable group-headers for groups defined in routes. Fixes #2.
 
 1.0.1 (2013-05-03)
