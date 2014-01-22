@@ -114,12 +114,18 @@ MIT
 History
 -------
 
-1.0.1
-~~~~~
- - Fixes the app crashing when a monitor reports an offline server
+1.0.2 (unreleased)
+~~~~~~~~~~~~~~~~~~
 
-1.0
-~~~
+ - Nothing yet.
+
+1.0.1 (2013-05-03)
+~~~~~~~~~~~~~~~~~~
+ 
+ - Fixes the app crashing when a monitor reports an offline server.
+
+1.0 (2013-04-22)
+~~~~~~~~~~~~~~~~
 
  - Initial Release
 
