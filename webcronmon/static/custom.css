@@ -9,6 +9,10 @@ body * {
     margin: 1em 0.5em 1em 0;
 }
 
+.header h1 a {
+    color: #353535;
+}
+
 .countdown {
     font-weight: normal;
     font-size: 1em;
@@ -31,6 +35,11 @@ table th {
     border-bottom: 1px solid #ccc;
     font-weight: normal;
     text-align: left !important;
+}
+
+table th a,
+table th a:hover {
+    color: #777;
 }
 
 table tr {

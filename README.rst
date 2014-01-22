@@ -115,9 +115,9 @@ History
 -------
 
 1.0.2 (unreleased)
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
- - Nothing yet.
+ - Adds clickable group-headers for groups defined in routes. Fixes #2.
 
 1.0.1 (2013-05-03)
 ~~~~~~~~~~~~~~~~~~

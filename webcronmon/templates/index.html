@@ -23,7 +23,7 @@
 
     <div class="row header">
         <div class="small-9 columns">
-            <h1>{{ config.app.title }}</h1>
+            <h1><a href="/" class="hint--right" data-hint="Open overview">{{ config.app.title }}</a></h1>
         </div>
         <div class="small-3 columns">
             <h2 class="countdown hint--left" data-hint="Pause / Continue Autorefresh" data-from="{{ config.app.auto_refresh }}">{{ config.app.auto_refresh }}</h2>
@@ -35,7 +35,11 @@
             {% for group, monitors in monitors|sort %}    
             <table>
                 <thead>
+                  {%- if group in clickable_groups -%}
+                    <th colspan="3"><a href="{{ clickable_groups[group] }}" class="hint--right" data-hint="Open group page">{{ group }}</a></th>
+                  {%- else -%}
                     <th colspan="3">{{ group }}</th>
+                  {%- endif -%}
                 </thead>
                 <tbody>
                 {% for monitor in monitors %}

@@ -121,6 +121,24 @@ def all_monitors():
     return in_groups
 
 
+def get_clickable_groups(config):
+    """ Returns a dictionary of group => link for groups which have an
+    associated route. If the group is part of multiple routes the last
+    defined route is used.
+
+    """
+    clickable = {}
+
+    for route, groups in config.routes:
+        if isinstance(groups, basestring):
+            continue
+
+        for group in groups:
+            clickable[group] = route
+
+    return clickable
+
+
 def show_monitors(config, shown_groups='*'):
 
     if shown_groups == '*':
@@ -131,5 +149,8 @@ def show_monitors(config, shown_groups='*'):
         )
 
     return render_template(
-        'index.html', monitors=shown_monitors, config=config
+        'index.html',
+        monitors=shown_monitors,
+        config=config,
+        clickable_groups=get_clickable_groups(config)
     )
